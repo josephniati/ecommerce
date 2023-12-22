@@ -29,7 +29,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        'https://5000-josephniati-ecommerce-vz2lk500dwi.ws-us106.gitpod.io/adminRegister',
+        'https://5000-josephniati-ecommerce-vz2lk500dwi.ws-us107.gitpod.io/adminRegister',
         user,
         {
           headers: {
