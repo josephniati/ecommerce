@@ -51,6 +51,7 @@ const Register = () => {
     } catch (error) {
       console.error('Error during registration:', error);
       window.alert('Registration Failed. Please try again later.');
+
     }
   };
 

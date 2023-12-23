@@ -9,11 +9,11 @@ ca = certifi.where()
 app = Flask(__name__)
 
 # Configure CORS to allow requests from your React app's origin(s)
-cors = CORS(app, resources={r"/api/*": {"origins": ["https://5000-josephniati-ecommerce-vz2lk500dwi.ws-us107.gitpod.io", "https://3000-josephniati-ecommerce-vz2lk500dwi.ws-us107.gitpod.io"]}})
+# cors = CORS(app, resources={r"/api/*": {"origins": ["https://5000-josephniati-ecommerce-vz2lk500dwi.ws-us107.gitpod.io", "https://3000-josephniati-ecommerce-vz2lk500dwi.ws-us107.gitpod.io"]}})
 
 jwt = JWTManager(app)
 
-app.config['MONGO_URI'] = 'mongodb+srv://emcmonkey12:emcmonkey12@cluster0.44ycswl.mongodb.net/ecommerce?retryWrites=true&w=majority&authSource=admin'
+app.config['MONGO_URI'] = 'mongodb+srv://emcmonkey12:Apple12@cluster0.44ycswl.mongodb.net/ecommerce?retryWrites=true&w=majority&authSource=admin'
 mongo = PyMongo(app)
 
 app.secret_key = 'secret key'
@@ -46,13 +46,20 @@ def adminRegister():
         phone = allUsers.find_one({'phone': request.json['phone']})
         
         if user:
+            print('Email already exists')
             return jsonify(message='Email already exists'), 401
         if companyName:
+            print('Company Name already exists')
+
             return jsonify(message='CompanyName already exists'), 401
         if phone:
+            print('Phone Number already exists')
+
             return jsonify(message='Phone Number already exists'), 401
             
         if request.json['password'] != request.json['cpassword']:
+            print('Passwords do not Match')
+           
             return jsonify(message='Password not Matching!!'), 401
         
         hashpw = bcrypt.hashpw(
